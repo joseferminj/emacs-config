@@ -1,0 +1,3 @@
+[submodule "vendors/deft"]
+	path = vendors/deft
+	url = git://jblevins.org/git/deft.git
