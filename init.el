@@ -1,3 +1,6 @@
+;;; Misc
+(set-default-font "PragmataPro-14")
+
 ;; Make sure that all the packages are installed
 ;; Add in your own as you wish:
 (defvar my-packages '(starter-kit
@@ -15,7 +18,9 @@
 ;;     (package-install p)))
 
 ;; Deft
+(add-to-list 'load-path "~/.emacs.d/vendors/deft")
 (require 'deft)
+(setq dropbox-everything-dir "~/Dropbox/Everything")
 (setq deft-extension "org")
 (setq deft-directory dropbox-everything-dir)
 (setq deft-text-mode 'org-mode)
