@@ -1,5 +1,6 @@
 ;;; Misc
 (set-default-font "PragmataPro-14")
+(server-start)
 
 ;; Make sure that all the packages are installed
 ;; Add in your own as you wish:
@@ -42,6 +43,12 @@
         "~/.emacs.d/elpa/yasnippet-0.8.0/snippets"    ;; the default collection
         ))
 
+;;; Sets themes directory
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+
+;;; Load zenburn theme by default
+(load-theme 'zenburn t)
+
 ;; Copy the path from the shell
 ;; https://github.com/purcell/exec-path-from-shell/blob/master/exec-path-from-shell.el
 (defun exec-path-from-shell-getenv (name)
@@ -65,3 +72,5 @@
 
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
+(put 'dired-find-alternate-file 'disabled nil)
+
