@@ -21,9 +21,8 @@
 ;; Deft
 (add-to-list 'load-path "~/.emacs.d/vendors/deft")
 (require 'deft)
-(setq dropbox-everything-dir "~/Dropbox/Everything")
 (setq deft-extension "org")
-(setq deft-directory dropbox-everything-dir)
+(setq deft-directory  "~/Google Drive/deft")
 (setq deft-text-mode 'org-mode)
 (global-set-key [f8] 'deft)
 
