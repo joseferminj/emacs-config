@@ -1,6 +1,13 @@
 ;;; Misc
 (set-default-font "PragmataPro-14")
+
 (server-start)
+
+;;; Add Marmalade as package archive source
+(require 'package)
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(package-initialize)
 
 ;; Make sure that all the packages are installed
 ;; Add in your own as you wish:
@@ -10,7 +17,9 @@
                       starter-kit-eshell
                       starter-kit-js
                       starter-kit-ruby
-                      yasnippet)
+                      yasnippet
+                      clojure-mode
+                      nrepl)
   "A list of packages to ensure are installed at launch.")
 
 ;;This not work with osx emacs because the version of the packages
@@ -72,4 +81,21 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 (put 'dired-find-alternate-file 'disabled nil)
+
+;;; Clojure
+
+;; Turn on  paredit for clojure
+(defun turn-on-paredit () (paredit-mode 1))
+(add-hook 'clojure-mode-hook 'turn-on-paredit)
+
+;; Adjusting NRepl a little
+
+;; Enable eldoc in clojure buffers
+(add-hook 'nrepl-interaction-mode-hook
+          'nrepl-turn-on-eldoc-mode)
+;; Stop the error buffer from popping up while working in the REPL buffer:
+(setq nrepl-popup-stacktraces nil)
+
+;; Make C-c C-z switch to the *nrepl* buffer in the current window:
+(add-to-list 'same-window-buffer-names "*nrepl*")
 
